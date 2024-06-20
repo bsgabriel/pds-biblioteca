@@ -1,0 +1,40 @@
+/* Menu */
+.menu {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  border-bottom: solid 1px gainsboro;
+  color: #3b82f6;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.menu li {
+  margin: 10px 20px;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.menu a:hover {
+  background-color: #3b82f645;
+}
+
+.title {
+  margin: 10px 20px;
+}
+
+.menu button {
+  padding: 10px 20px;
+  margin: 10px 10px;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 40px;
+}
