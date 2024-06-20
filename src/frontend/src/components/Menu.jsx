@@ -17,9 +17,10 @@ const Menu = () => (
         </ul>
       </nav>
     </div>
-
-    <button className="busca">Busca</button>
-    <button className="aluguel">Aluguel</button>
+    <div className="acoes">
+      <button className="busca">Busca</button>
+      <button className="aluguel">Aluguel</button>
+    </div>
   </div>
 );
 
