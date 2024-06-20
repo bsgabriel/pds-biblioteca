@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
-public abstract class AbstractFirestoreService <T extends AbstractFirestoreEntity> {
+public abstract class AbstractFirestoreService<T extends AbstractFirestoreEntity> {
 
     @Autowired
     private Firestore firestore;
@@ -21,7 +21,9 @@ public abstract class AbstractFirestoreService <T extends AbstractFirestoreEntit
 
     protected DocumentReference addDocument(T obj) {
         try {
-            return this.firestore.collection(getCollectionName()).add(obj.toMap2()).get();
+            return this.firestore.collection(this.getCollectionName())
+                    .add(obj.toMap2())
+                    .get();
         } catch (ExecutionException | InterruptedException e) {
             throw new FirestoreExecuteException("FIRESTORE_DATA_CREATION", "Failed to add document to Firestore.", e);
         }
@@ -29,7 +31,11 @@ public abstract class AbstractFirestoreService <T extends AbstractFirestoreEntit
 
     protected List<T> getAllDocuments(Class<T> type) {
         try {
-            return this.firestore.collection(getCollectionName()).get().get().getDocuments().stream()
+            return this.firestore.collection(this.getCollectionName())
+                    .get()
+                    .get()
+                    .getDocuments()
+                    .stream()
                     .map(document -> this.fromDocument(document, type).orElse(null))
                     .filter(Objects::nonNull)
                     .toList();
