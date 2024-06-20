@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <h1 className="flex ml-20 text-4xl font-bold ">Biblioteca</h1>
+      <h1 className="flex ml-20 text-4xl font-bold ">Livros</h1>
       <BookList
         books={books}
         onEdit={handleEditBook}
