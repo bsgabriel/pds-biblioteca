@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 
 public abstract class AbstractFirestoreService<T extends AbstractFirestoreEntity> {
 
@@ -61,6 +62,12 @@ public abstract class AbstractFirestoreService<T extends AbstractFirestoreEntity
         }
     }
 
+    protected void updateDocument(String documentId, T data) {
+        this.firestore.collection(this.getCollectionName())
+                .document(documentId)
+                .update(removeNulls(toMap(data)));
+    }
+
     private Optional<T> fromDocument(DocumentSnapshot document, Class<T> cls) {
         final T obj = document.toObject(cls);
 
@@ -76,5 +83,12 @@ public abstract class AbstractFirestoreService<T extends AbstractFirestoreEntity
         });
         map.remove("id");
         return map;
+    }
+
+    private Map<String, Object> removeNulls(Map<String, Object> map) {
+        return map.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() != null)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 }
