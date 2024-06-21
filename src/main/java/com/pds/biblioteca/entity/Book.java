@@ -4,9 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)

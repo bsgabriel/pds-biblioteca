@@ -21,6 +21,14 @@ public class BookFirestoreService extends AbstractFirestoreService<Book> {
         return super.getAllDocuments(Book.class);
     }
 
+    public void delete(String id) {
+        super.deleteDocument(id);
+    }
+
+    public void update(String bookId, Book book) {
+        super.updateDocument(bookId, book);
+    }
+
     @Override
     protected String getCollectionName() {
         return "books";
