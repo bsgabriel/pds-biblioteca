@@ -50,6 +50,17 @@ public abstract class AbstractFirestoreService<T extends AbstractFirestoreEntity
         }
     }
 
+    protected void deleteDocument(String id) {
+        try {
+            this.firestore.collection(this.getCollectionName())
+                    .document(id)
+                    .delete()
+                    .get();
+        } catch (ExecutionException | InterruptedException e) {
+            throw new FirestoreExecuteException("FIRESTORE_DATA_DELETION", "Failed to delete document from Firestore.", e);
+        }
+    }
+
     private Optional<T> fromDocument(DocumentSnapshot document, Class<T> cls) {
         final T obj = document.toObject(cls);
 
