@@ -25,4 +25,11 @@ public class BookController {
     public ResponseEntity<List<Book>> getAllBooks() {
         return ResponseEntity.ok(this.bookFirestoreService.getAll());
     }
+
+    @DeleteMapping("/{bookId}")
+    public ResponseEntity<Void> deleteBook(@PathVariable String bookId) {
+        this.bookFirestoreService.delete(bookId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 }
