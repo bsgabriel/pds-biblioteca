@@ -7,6 +7,11 @@ public class FirestoreExecuteException extends RuntimeException {
 
     private final String error;
 
+    public FirestoreExecuteException(String error, String message) {
+        super(message);
+        this.error = error;
+    }
+
     public FirestoreExecuteException(String error, String message, Throwable cause) {
         super(message, cause);
         this.error = error;
