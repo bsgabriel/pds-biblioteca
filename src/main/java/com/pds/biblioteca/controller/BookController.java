@@ -38,5 +38,10 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.OK ).build(); // TODO ver o que retornar
     }
 
+    @GetMapping("/{bookId}")
+    public ResponseEntity<Book> searchBook(@PathVariable String bookId) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.bookFirestoreService.search(bookId));
+    }
+
 
 }

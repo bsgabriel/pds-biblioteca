@@ -82,6 +82,24 @@ public abstract class AbstractFirestoreService<T extends AbstractFirestoreEntity
                 .update(map);
     }
 
+    protected T findDocumentById(String documentId, Class<T> type) {
+        if (StringUtils.isBlank(documentId))
+            throw new FirestoreExecuteException("FIRESTORE_DATA_RETRIEVAL", "Document id must not be empty.");
+
+
+        final DocumentSnapshot document;
+        try {
+             document = this.firestore.collection(this.getCollectionName())
+                    .document(documentId)
+                    .get()
+                    .get();
+        } catch (ExecutionException | InterruptedException e) {
+            throw new FirestoreExecuteException("FIRESTORE_DATA_RETRIEVAL", "Failed to search document from Firestore.", e);
+        }
+
+        return this.fromDocument(document, type).orElseThrow(() -> new FirestoreExecuteException("FIRESTORE_DATA_RETRIEVAL", "Book not found."));
+    }
+
     private Optional<T> fromDocument(DocumentSnapshot document, Class<T> cls) {
         final T obj = document.toObject(cls);
 
