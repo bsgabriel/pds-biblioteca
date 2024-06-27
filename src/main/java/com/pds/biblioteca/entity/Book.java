@@ -13,4 +13,5 @@ public class Book extends AbstractFirestoreEntity {
     private String publisher;
     private Integer year;
     private String imageBook;
+    private Integer stockQuantity;
 }
