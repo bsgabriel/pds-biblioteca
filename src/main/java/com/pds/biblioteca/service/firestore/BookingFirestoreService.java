@@ -4,9 +4,11 @@ import com.google.cloud.firestore.DocumentReference;
 import com.pds.biblioteca.entity.Book;
 import com.pds.biblioteca.entity.Booking;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BookingFirestoreService extends AbstractFirestoreService<Booking> {
 
     @Autowired
