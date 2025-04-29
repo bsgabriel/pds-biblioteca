@@ -1,5 +1,6 @@
 package com.pds.biblioteca.entity;
 
+import fireconnect.entity.AbstractFirestoreEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

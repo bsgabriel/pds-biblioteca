@@ -2,6 +2,7 @@ package com.pds.biblioteca.service.firestore;
 
 import com.google.cloud.firestore.DocumentReference;
 import com.pds.biblioteca.entity.Book;
+import fireconnect.service.AbstractFirestoreService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

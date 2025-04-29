@@ -3,6 +3,7 @@ package com.pds.biblioteca.service.firestore;
 import com.google.cloud.firestore.DocumentReference;
 import com.pds.biblioteca.entity.Book;
 import com.pds.biblioteca.entity.Booking;
+import fireconnect.service.AbstractFirestoreService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
