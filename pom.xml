@@ -39,6 +39,12 @@
 			<version>9.3.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>io.github.bsgabriel</groupId>
+			<artifactId>fireconnect</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
